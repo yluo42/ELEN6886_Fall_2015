@@ -13,8 +13,12 @@ After installing Vamp, you need to install the Melodia plugin. It can be found a
 
 We use MIR1K [2] for evaluation. Please download the MIR1K dataset from https://sites.google.com/site/unvoicedsoundseparation/mir-1k, and put it in the same path with all the codes. To run the evaluation, you need to first use ODL_training.m to train the dictionaries for vocal and non-vocal part, then run evaluate_VIARPCA.m.
 
+We use the SPAMS toolbox [3] for dictionary learning. More details about online dictionary learning (ODL) please refer to [3].
+
 ----------------------------------------------------------------------------
 
 [1] Salamon J, Gómez E. Melody extraction from polyphonic music signals using pitch contour characteristics[J]. Audio, Speech, and Language Processing, IEEE Transactions on, 2012, 20(6): 1759-1770.  
 
-[2] C.-L. Hsu and J.-S. R. Jang. On the improvement of singing voice separation for monaural recordings us- ing the MIR-1K dataset. IEEE Trans. Audio, Speech & Language Processing, 18(2):310–319, 2010.
+[2] C.-L. Hsu and J.-S. R. Jang. On the improvement of singing voice separation for monaural recordings us- ing the MIR-1K dataset. IEEE Trans. Audio, Speech & Language Processing, 18(2):310–319, 2010.  
+
+[3] Mairal J, Bach F, Ponce J, et al. Online dictionary learning for sparse coding[C]//Proceedings of the 26th Annual International Conference on Machine Learning. ACM, 2009: 689-696.
