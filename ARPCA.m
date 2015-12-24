@@ -66,7 +66,7 @@ function [accompaniment, vocals, mag_vocal, mag_bgm] = ARPCA(mixture, fs)
         cur_block = total_block{i};
         if block_type(i)
             %fprintf('PRCAm for vocal part...\n');
-            [mag_bgm_vocal, mag_singing_vocal] = RPCA(cur_block, 1/sqrt(max(size(cur_block))));
+            [mag_bgm_vocal, mag_singing_vocal] = RPCA(cur_block, 1);
             vocals{i} = mag_singing_vocal;
             accompaniment{i} = mag_bgm_vocal;
 
@@ -74,7 +74,7 @@ function [accompaniment, vocals, mag_vocal, mag_bgm] = ARPCA(mixture, fs)
         else
             
                 %fprintf('RPCA for nonvocal part...\n');
-                [mag_bgm_non, mag_singing_non] = RPCA(cur_block, 5/sqrt(max(size(cur_block))));
+                [mag_bgm_non, mag_singing_non] = RPCA(cur_block, 5);
                 %[mag_bgm_non, mag_singing_non] = RPCA(cur_block, .5);
                 vocals{i} = mag_singing_non;
                 accompaniment{i} = mag_bgm_non;

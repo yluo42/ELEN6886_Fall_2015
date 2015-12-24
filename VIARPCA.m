@@ -12,7 +12,7 @@ function [accompaniment, vocals] = VIARPCA(mixture, D_v, D_bgm, fs)
     audiowrite('harmo.wav',mixture,fs);
     
     [S, F, T] = spectrogram(mixture(:,1), hamming(1024), 1024-256, 1024, fs);
-    S = STFT_s(mixture(:,1),1024,hamming(1024),256,fs);
+    S = STFT_s(mixture(:,1),1024,hamming(1024), 256,fs);
     %[S, F, T] = spectrogram(xHarm(:,1), hamming(1024), 1024-256, 1024, fs);
     
     % First detect the vocal and nonvocal part of the recording
@@ -67,10 +67,15 @@ function [accompaniment, vocals] = VIARPCA(mixture, D_v, D_bgm, fs)
         if block_type(i)
             %fprintf('PRCAm for vocal part...\n');
             [mag_singing_vocal, mag_bgm_vocal, E] = vocal_mlrr(cur_block, D_v, D_bgm, .25, 1/sqrt(max(size(cur_block))));
-            vocals{i} = mag_singing_vocal+E;
+            vocal_temp = mag_singing_vocal+E;
+            vocal_temp(vocal_temp < 0) = 0;
+            vocals{i} = vocal_temp;
             %[mag_bgm_vocal,mag_singing_vocal] = RPCAm(cur_block, D_bgm, .2);
             %vocals{i} = mag_singing_vocal;
-            accompaniment{i} = mag_bgm_vocal;
+            accompaniment_temp = mag_bgm_vocal;
+            accompaniment_temp(accompaniment_temp < 0) = 0;
+            accompaniment{i} = accompaniment_temp;
+            
            
             %vocals{i} = cur_block;
             %accompaniment{i} = cur_block;
@@ -80,8 +85,13 @@ function [accompaniment, vocals] = VIARPCA(mixture, D_v, D_bgm, fs)
                 %fprintf('RPCA for nonvocal part...\n');
                 [mag_bgm_non, mag_singing_non] = RPCAm(cur_block, D_bgm, 1);
                 %[mag_bgm_non, mag_singing_non] = RPCA(cur_block, .5);
-                vocals{i} = mag_singing_non;
-                accompaniment{i} = mag_bgm_non;
+                vocal_temp = mag_singing_non;
+                vocal_temp(vocal_temp < 0) = 0;
+                vocals{i} = vocal_temp;
+                
+                accompaniment_temp = mag_bgm_non;
+                accompaniment_temp(accompaniment_temp < 0) = 0;
+                accompaniment{i} = accompaniment_temp;
                 %vocals{i} = cur_block;
                 %accompaniment{i} = cur_block;
                 %fprintf('done.\n');

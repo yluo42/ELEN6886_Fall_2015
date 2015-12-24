@@ -32,7 +32,7 @@ function D = ODL_training(filename)
     for i = 1:file_cnt
         name = training_file{file_cnt};
         [y, fs] = audioread(name);
-        [S, F, T] = spectrogram(y(:,1), hamming(1024), 256, 1024, fs);
+        [S, F, T] = spectrogram(y(:,2), hamming(1024), 256, 1024, fs);
         train_spec{cnt} = S(:,all(S,1)); % delete zero columns
         fprintf('%d out of %d files read\n', cnt, file_cnt);
         cnt = cnt + 1;
