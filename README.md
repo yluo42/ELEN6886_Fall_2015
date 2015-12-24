@@ -12,7 +12,6 @@ After installing Vamp, you need to install the Melodia plugin. It can be found a
 
 
 We use MIR1K [2] for evaluation. Please download the MIR1K dataset from https://sites.google.com/site/unvoicedsoundseparation/mir-1k, and put it in the same path with all the codes. To run the evaluation, you need to first use ODL_training.m to train the dictionaries for vocal and non-vocal part, then run evaluate_VIARPCA.m.
-All the codes are also available at https://github.com/ScartleRoy/ELEN6886_Fall_2015.
 
 ----------------------------------------------------------------------------
 
