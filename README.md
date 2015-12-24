@@ -15,5 +15,6 @@ We use MIR1K [2] for evaluation. Please download the MIR1K dataset from https://
 
 ----------------------------------------------------------------------------
 
-[1] Salamon J, Gómez E. Melody extraction from polyphonic music signals using pitch contour characteristics[J]. Audio, Speech, and Language Processing, IEEE Transactions on, 2012, 20(6): 1759-1770.
+[1] Salamon J, Gómez E. Melody extraction from polyphonic music signals using pitch contour characteristics[J]. Audio, Speech, and Language Processing, IEEE Transactions on, 2012, 20(6): 1759-1770.  
+
 [2] C.-L. Hsu and J.-S. R. Jang. On the improvement of singing voice separation for monaural recordings us- ing the MIR-1K dataset. IEEE Trans. Audio, Speech & Language Processing, 18(2):310–319, 2010.
